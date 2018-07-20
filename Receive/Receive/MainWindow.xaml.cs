@@ -62,5 +62,35 @@ namespace Receive
             receive.CloseConnection();
             this.Close();
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            receive.CloseConnection();
+            this.Close();
+        }
+
+        private void AddConnection_Click(object sender, RoutedEventArgs e)
+        {
+            WindowConnectionBox window=new WindowConnectionBox();
+            window.Show();
+        }
+
+        private void buttonShowConnections_Click(object sender, RoutedEventArgs e)
+        {
+            WindowShowConnections window=new WindowShowConnections();
+            window.Show();
+        }
+
+        private void buttonDeleteConnection_Click(object sender, RoutedEventArgs e)
+        {
+            WindowDeleteConnection window = new WindowDeleteConnection();
+            window.Show();
+        }
+
+        private void button_send_Click(object sender, RoutedEventArgs e)
+        {
+            WindowSendFile window = new WindowSendFile();
+            window.Show();
+        }
     }
 }

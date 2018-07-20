@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,23 +12,24 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Receive.Model;
+using Receive.ViewModel;
 
 namespace Receive
 {
     /// <summary>
-    /// Interaction logic for InputBox.xaml
+    /// Interaction logic for WindowShowConnections.xaml
     /// </summary>
-    public partial class InputBox : Window
+    public partial class WindowShowConnections : Window
     {
-        public InputBox()
+        public WindowShowConnections()
         {
             InitializeComponent();
+            var connectionViewModel = new ConnectionViewModel();
+            connectionViewModel.LoadConnections();
+            this.DataContext = connectionViewModel;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //add new receiver
-            
-        }
+        
     }
 }

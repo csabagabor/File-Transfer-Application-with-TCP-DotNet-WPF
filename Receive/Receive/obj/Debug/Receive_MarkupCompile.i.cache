@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Csabi\Downloads\Receive\Receive\obj\Debug\
+C:\Users\Csabi\source\repos\Receive\Receive\obj\Debug\
 Receive
 none
 false
 DEBUG;TRACE
-C:\Users\Csabi\Downloads\Receive\Receive\App.xaml
-2527596451
+C:\Users\Csabi\source\repos\Receive\Receive\App.xaml
+5986115689
 
-131349414984
+18-1783561926
 14-1175798665
-InputBox.xaml;MainWindow.xaml;
+WindowConnectionBox.xaml;MainWindow.xaml;WindowDeleteConnection.xaml;WindowSendFile.xaml;WindowShowConnections.xaml;
 
-False
+True
 

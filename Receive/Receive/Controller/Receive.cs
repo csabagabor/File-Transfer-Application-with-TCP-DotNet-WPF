@@ -15,7 +15,7 @@ namespace Receive.Model
         private const int BUFFER_SIZE = 1024;//packet size for TCP 
         private TcpListener Listener;
         private TcpClient Client;
-
+        
         public Receive()
         {
             //initialise the thread used to handle the connections

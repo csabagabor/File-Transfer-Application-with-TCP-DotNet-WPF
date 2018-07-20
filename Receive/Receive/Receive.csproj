@@ -55,7 +55,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="InputBox.xaml">
+    <Compile Include="Controller\Send.cs" />
+    <Compile Include="ViewModel\ConnectionViewModel.cs" />
+    <Compile Include="WindowDeleteConnection.xaml.cs">
+      <DependentUpon>WindowDeleteConnection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowSendFile.xaml.cs">
+      <DependentUpon>WindowSendFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowShowConnections.xaml.cs">
+      <DependentUpon>WindowShowConnections.xaml</DependentUpon>
+    </Compile>
+    <Page Include="WindowConnectionBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -67,16 +78,28 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="InputBox.xaml.cs">
-      <DependentUpon>InputBox.xaml</DependentUpon>
+    <Compile Include="WindowConnectionBox.xaml.cs">
+      <DependentUpon>WindowConnectionBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="WindowDeleteConnection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowSendFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowShowConnections.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Connections.cs" />
+    <Compile Include="Model\StoredConnections.cs" />
     <Compile Include="Model\WriteFile.cs" />
     <Compile Include="Controller\Receive.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
