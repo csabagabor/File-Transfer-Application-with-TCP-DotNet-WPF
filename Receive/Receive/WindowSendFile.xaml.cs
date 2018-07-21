@@ -39,7 +39,7 @@ namespace Receive
                 comboBox_connection.Items.Add(con);
             }
 
-            comboBox_connection.SelectedIndex = 0;
+            //comboBox_connection.SelectedIndex = 0;
 
 
         }
