@@ -79,6 +79,17 @@ namespace Receive.Model
             return null;
         }
 
+        public static Connection GetConnectionbyIp(string ip)
+        {
+            foreach (Connection con in Connections)
+            {
+                if (con.IP.Equals(ip))
+                    return con;
+            }
+
+            return null;
+        }
+
         public static void SaveConnections()
         {
             try

@@ -21,7 +21,7 @@ namespace Receive
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly Model.Receive receive = new Model.Receive();
+        private readonly Model.Receive receive;
         private int nr_dots = 0;
 
         public MainWindow()
@@ -32,6 +32,7 @@ namespace Receive
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0,0,100);
             dispatcherTimer.Start();
+            receive = new Model.Receive(this);
         }
 
 
@@ -91,6 +92,16 @@ namespace Receive
         {
             WindowSendFile window = new WindowSendFile();
             window.Show();
+        }
+
+        public ProgressBar GetReveiveProgressBar()
+        {
+            return this.progressBar_receive;
+        }
+
+        private void progressBar_receive_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            label_percentage.Content = (int)((progressBar_receive.Value / progressBar_receive.Maximum) * 100) + "%";
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Windows;
+using System.Windows.Threading;
 using MessageBox = System.Windows.MessageBox;
 using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
 
@@ -15,9 +16,12 @@ namespace Receive.Model
         private const int BUFFER_SIZE = 1024;//packet size for TCP 
         private TcpListener Listener;
         private TcpClient Client;
-        
-        public Receive()
+        private MainWindow window;
+        private readonly Dispatcher disp = Dispatcher.CurrentDispatcher;
+
+        public Receive(MainWindow window)
         {
+            this.window = window;
             //initialise the thread used to handle the connections
             //only 1 connection can be handled at one time
             T = new Thread(new ThreadStart(StartConnection));
@@ -31,13 +35,35 @@ namespace Receive.Model
             ReceiveFileOverTcp(12345);
         }
 
+
+        private void AddToProgressBar(double value)
+        {
+            disp.Invoke(
+                () => { window.GetReveiveProgressBar().Value += value; }
+            );
+        }
+
+        private void UpdateProgressBar(double value)
+        {
+            disp.Invoke(
+                () => { window.GetReveiveProgressBar().Value = value; }
+            );
+        }
+
+        private void SetmaxmimumProgressBar(double max)
+        {
+            disp.Invoke(
+                () => { window.GetReveiveProgressBar().Maximum = max; }
+            );
+        }
+
+
         private void ReceiveFileOverTcp(int portNumber)
         {
             try
             {
                 Listener = new TcpListener(IPAddress.Any, portNumber);
                 Listener.Start();
-                
                 while (true)
                 {
                     AcceptClient();
@@ -53,10 +79,22 @@ namespace Receive.Model
         {
             try
             {
-                if (Listener.Pending())
+                Client = Listener.AcceptTcpClient();
+                UpdateProgressBar(0);
+                string clientIP = ((IPEndPoint) Client.Client.RemoteEndPoint).Address.ToString();
+                var netstream = Client.GetStream();
+                Connection clientConnection = StoredConnections.GetConnectionbyIp(clientIP);
+                if (clientConnection == null)//new client
                 {
-                    Client = Listener.AcceptTcpClient();
-                    var netstream = Client.GetStream();
+                    if (MessageBox.Show(" Accept File from new client with ip" + clientIP, "Connection", MessageBoxButton.YesNo,
+                        MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        ChooseFile(netstream);
+                    }
+                }
+                else if (MessageBox.Show("Accept the Incoming File from" + clientConnection.Name, "Connection", MessageBoxButton.YesNo,
+                    MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
                     ChooseFile(netstream);
                 }
             }
@@ -104,28 +142,32 @@ namespace Receive.Model
 
         private int ReceiveFile(NetworkStream netstream, string fileName)
         {
-            int totalReceivedBytes = 0;
             //read size of file to know if everything went right and all the file 
             //was received
             var fileSize = ReceiveFileSize(netstream);
             WriteFile file = new WriteFile(fileName, fileSize);
             if (file.Size > 0)
             {
+                SetmaxmimumProgressBar(file.Size);
+                
                 var data = new byte[BUFFER_SIZE];
-                int receivedBytes;
+                int receivedBytes, howOftenToUpdate = file.Size / 15, updateReceivedBytes = 0, totalReceivedBytes=0;
                 while ((receivedBytes = netstream.Read(data, 0, data.Length)) > 0)
                 {
                     file.WriteData(data, receivedBytes);
-                    totalReceivedBytes += receivedBytes;
+                    updateReceivedBytes += receivedBytes;
+                    if (updateReceivedBytes > howOftenToUpdate)
+                    {
+                        totalReceivedBytes += updateReceivedBytes;
+                        AddToProgressBar(updateReceivedBytes);
+                        updateReceivedBytes = 0;
+                    }
                 }
+                totalReceivedBytes += updateReceivedBytes;
+                UpdateProgressBar(totalReceivedBytes);
                 file.Close();
                 if (file.Size == totalReceivedBytes)
-                {
-                    MessageBox.Show("File was received successfully!", "Info",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information);
                     return 1;
-                }
             }
             MessageBox.Show("File was not received. Connection was interrupted!",
                 "Warning", MessageBoxButton.OK,
@@ -136,40 +178,35 @@ namespace Receive.Model
 
         private void ChooseFile(NetworkStream netstream)
         {
-            var result = MessageBox.Show("Accept the Incoming File", "Connection", MessageBoxButton.YesNo,
-                       MessageBoxImage.Question);
             var extension="";
-            
-            if (result == MessageBoxResult.Yes)
+            SaveFileDialog dialog = new SaveFileDialog
             {
-                SaveFileDialog dialog = new SaveFileDialog
-                {
-                    Filter = "All files (*.*)|*.*",
-                    RestoreDirectory = true,
-                    Title = "Where do you want to save the file?",
-                    FileName = ReceiveTitle(netstream)
-                    //DialogSave.InitialDirectory = @"C:/";
-                };
-                extension = Path.GetExtension(dialog.FileName);
-                
-                var fileName = string.Empty;
-                if (dialog.ShowDialog() == true)
-                    fileName = dialog.FileName;
+                Filter = "All files (*.*)|*.*",
+                RestoreDirectory = true,
+                Title = "Where do you want to save the file?",
+                FileName = ReceiveTitle(netstream)
+                //DialogSave.InitialDirectory = @"C:/";
+            };
+            extension = Path.GetExtension(dialog.FileName);
+            
+            var fileName = string.Empty;
+            if (dialog.ShowDialog() == true)
+                fileName = dialog.FileName;
 
-                if (fileName != string.Empty)
-                {
-                    //check if extension was not changed
-                    if (!fileName.Contains(extension))
-                        fileName += extension;
-                    ReceiveFile(netstream, fileName);
-                }
-                netstream.Close();
-                Client.Close();
+            if (fileName != string.Empty)
+            {
+                //check if extension was not changed
+                if (!fileName.Contains(extension))
+                    fileName += extension;
+                ReceiveFile(netstream, fileName);
             }
+            netstream.Close();
+            Client.Close();
         }
 
         public void CloseConnection()
         {
+            Listener.Server.Close();
             this.T.Abort();
         }
     }
