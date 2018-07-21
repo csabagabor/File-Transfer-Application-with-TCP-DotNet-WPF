@@ -38,7 +38,10 @@ namespace Receive
             {
                 comboBox_connection.Items.Add(con);
             }
-            
+
+            comboBox_connection.SelectedIndex = 0;
+
+
         }
         
         private void button_browse_Click(object sender, RoutedEventArgs e)
@@ -75,6 +78,10 @@ namespace Receive
             return label_msg;
         }
 
-
+        private void progress_bar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            label_percentage.Content = (int)((progress_bar.Value / progress_bar.Maximum) * 100) + "%";
+        }
+       
     }
 }

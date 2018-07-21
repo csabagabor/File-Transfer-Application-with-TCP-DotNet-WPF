@@ -10,6 +10,18 @@
         <Button x:Name="buttonShowConnections" Content="Show Connections" HorizontalAlignment="Left" Margin="10,181,0,0" VerticalAlignment="Top" Width="107" Click="buttonShowConnections_Click" />
         <Button x:Name="buttonDeleteConnection" Content="Delete Connection" HorizontalAlignment="Left" Margin="10,201,0,0" VerticalAlignment="Top" Width="107" Click="buttonDeleteConnection_Click" />
         <Button x:Name="button_send" Content="Send File" HorizontalAlignment="Left" Margin="10,141,0,0" VerticalAlignment="Top" Width="107" Click="button_send_Click"/>
+        <ProgressBar x:Name="progressBar_receive" Value="0" HorizontalAlignment="Left" Height="26" Margin="204,231,0,0" VerticalAlignment="Top" Width="264" ValueChanged="progressBar_receive_ValueChanged"/>
+        <Label x:Name="label_percentage" Content="" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="286,231,0,0" VerticalAlignment="Top" Width="89"/>
+        <Label x:Name="label_receive" Content="Receive file" HorizontalAlignment="Left" Margin="204,201,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.874,0.522" Width="146">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.318"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
 
     </Grid>
 </Window>
