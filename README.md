@@ -14,9 +14,10 @@ This application can be used to send files over the Internet. For example it can
 
 #### **Click on the following headers to open the corresponding description/tutorial**  
 
+
 <details>  
   <summary>Adding new Connection </summary>  
-   After pressing the <b>Add connection</b>button, a new window appears where the user has to introduce a new name and IP:  
+   After pressing the <b>Add connection</b> button, a new window appears where the user has to introduce a new name and IP:  
     <img alt="Photo" src="https://user-images.githubusercontent.com/37183688/43038696-d60f129c-8d26-11e8-84b4-27ac9794add1.png">     
  <img alt="Photo" src="https://user-images.githubusercontent.com/37183688/43038698-dd537688-8d26-11e8-9307-61aa77dbe274.png">     
 </details>
@@ -25,7 +26,7 @@ This application can be used to send files over the Internet. For example it can
 
 <details> 
   <summary>Showing Connections </summary>  
-   After pressing the <b>Show Connections</b>button, a new window appears where the already added connections are shown:    
+   After pressing the <b>Show Connections</b> button, a new window appears where the already added connections are shown:    
    <img alt="Photo" src="https://user-images.githubusercontent.com/37183688/43038715-7a59d7b0-8d27-11e8-899a-b0ab0c98573b.png">  
 </details>
 
@@ -34,10 +35,10 @@ This application can be used to send files over the Internet. For example it can
 
 <details> 
   <summary>Sending a File </summary>  
-   After pressing the <b>Send File</b>button, a new window appears where the user can choose which file to send and to whom:   
+   After pressing the <b>Send File</b> button, a new window appears where the user can choose which file to send and to whom:   
    Fist of all choose to whom you want to send the File from the drop-down list    
   <br> <img alt="Description" src="https://user-images.githubusercontent.com/37183688/43038774-87d4ecc6-8d28-11e8-932a-57ffa70d1d80.png">      
-<br> After that, click on the <b>Browse</b>button to choose the File. This will open a Dialog for you....      
+<br> After that, click on the <b>Browse</b> button to choose the File. This will open a Dialog for you....      
  <img alt="Photo" src="https://user-images.githubusercontent.com/37183688/43038781-9f3a88a8-8d28-11e8-96c1-d5f8eaf53d75.png">       
 <br> Press the Send button and wait for the other user to accept the incoming File(**Note: he must be online and on the network/Internet   to receive the File**)      
  <img alt="Photo" src="https://user-images.githubusercontent.com/37183688/43038789-c4e1d4e4-8d28-11e8-99dd-2c2012e34872.png">     
@@ -50,7 +51,7 @@ This application can be used to send files over the Internet. For example it can
 
 <details> 
   <summary>Deleting a Connection </summary>  
- <br>  After pressing the <b>Delete Connection</b>button, a new window appears where the user can choose which connection to delete(name   of connection needs to be entered and not its IP address)    
+ <br>  After pressing the <b>Delete Connection</b> button, a new window appears where the user can choose which connection to delete(name   of connection needs to be entered and not its IP address)    
   <br>   <img alt="Photo" src="https://user-images.githubusercontent.com/37183688/43038835-bbe11b10-8d29-11e8-8f89-f41c45efb599.png">     
 </details>
 
@@ -66,6 +67,5 @@ This application can be used to send files over the Internet. For example it can
  <br><img alt="Photo" src="https://user-images.githubusercontent.com/37183688/43038884-8e4c6bb8-8d2a-11e8-9b6b-1c570e896889.png">   
  <br> You are ready. Check the file in the chosen folder.    
 </details>  
-
 
 
