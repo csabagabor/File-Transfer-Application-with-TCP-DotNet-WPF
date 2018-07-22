@@ -6,7 +6,7 @@ This application can be used to send files over the Internet. For example it can
 - application logic is in C#
 - uses port 12345 by default but it can be changed easily in the project, in the class *Receive* and *Send*
 - the packet size is 1KB now but can be changed easily in these classes: *Receive*, *Send*
-- when using on LAN, local IP addresses need to be used and not public ones, for example: *192.168.2.100*
+- when using it on LAN, local IP addresses need to be used and not public ones, for example: *192.168.2.100*
 
 ## Basic usage(tutorial)
 - the main window has several buttons that are used to carry out an operation by opening a new window where the user can easily do what he wants  
