@@ -9,6 +9,7 @@ This application can be used to send files over the Internet. For example it can
 - when using it on LAN, local IP addresses need to be used and not public ones, for example: *192.168.2.100*
 
 ## Basic usage(tutorial)
+First of all, check out this short video tutorial on youtube: https://www.youtube.com/watch?v=G0Ga_pH2QUc
 - the main window has several buttons that are used to carry out an operation by opening a new window where the user can easily do what he wants  
  <img alt="Photo" src="https://user-images.githubusercontent.com/37183688/43038667-4b8fe7cc-8d26-11e8-9976-4872abcf1b47.png">   
 
