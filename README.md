@@ -7,6 +7,7 @@ This application can be used to send files over the Internet. For example it can
 - uses port 12345 by default but it can be changed easily in the project, in the class *Receive* and *WindowSendFile.*
 - the packet size is 1KB now but can be changed easily in these classes: *Receive*, *Send*
 - when using it on LAN, local IP addresses need to be used and not public ones, for example: *192.168.2.100*
+- the speed of transfer is pretty fast, so if you want to copy a file from a computer to another, this application is a must
 
 ## Basic usage(tutorial)
 First of all, check out this short video guide on youtube: https://www.youtube.com/watch?v=G0Ga_pH2QUc
