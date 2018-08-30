@@ -1,12 +1,12 @@
 # File Transfer Application with TCP made in .Net WPF
 
 ## About this project
-This application can be used to send files over the Internet. For example it can be used in a local network to send files from one computer to another. Because the application is very lightweight and does not use any busy waiting technique, it can be used to send files **extremely fast** and **securely**(because the files won't be stored on a server). The application is able to memorize previously added connections(a connection consists from a name and IP address) using **serialization**. Saved connections will be stored in the file  *"data.bin"*.
-- it is a WPF application, so the UI can be changed quite easily using XAML
+This application can be used to send files over the Internet. For example it can be used in a local network to send files from one computer to another. Because the application is very lightweight and does not use any busy waiting technique, it can be used to send files **extremely fast** and **securely**(because the files won't be stored on a server). The application is able to memorize previously added connections(a connection consists from a name and `IP` address) using **serialization**. Saved connections will be stored in the file  *"data.bin"*.
+- it is a `WPF` application, so the UI can be changed quite easily using `XAML`
 - application logic is in C#
-- uses port `12345` by default but it can be changed easily in the project, in the class *Receive* and *WindowSendFile.*
+- uses port `12345` by default but it can be changed easily in the project, in the class `Receive` and `WindowSendFile`.
 - the packet size is `1KB` now but can be changed easily in these classes: *Receive*, *Send*
-- when using it on LAN, local IP addresses need to be used and not public ones, for example: `*192.168.2.100*`
+- when using it on `LAN`, local `IP` addresses need to be used and not public ones, for example: `192.168.2.100`
 - the speed of transfer is pretty fast, so if you want to copy a file from a computer to another, this application is a must
 ## Important
 - Notice that when using this application in a LAN network, private IP addresses can change from time to time, so connections need to be deleted and readded
