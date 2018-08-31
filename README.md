@@ -12,7 +12,7 @@ This application can be used to send files over the Internet. For example it can
 - Notice that when using this application in a LAN network, private IP addresses can change from time to time, so connections need to be deleted and readded
 
 ## Basic usage(tutorial)
-First of all, check out this short video guide on youtube: https://www.youtube.com/watch?v=G0Ga_pH2QUc
+[Check out this short video on YouTube](https://www.youtube.com/watch?v=_UwzDPoDwjw&feature=youtu.be) 
 - the main window has several buttons that are used to carry out an operation by opening a new window where the user can easily do what he wants  
  <img alt="Photo" src="https://user-images.githubusercontent.com/37183688/43038667-4b8fe7cc-8d26-11e8-9976-4872abcf1b47.png">   
 
